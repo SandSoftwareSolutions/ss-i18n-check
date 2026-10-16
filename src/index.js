@@ -58,15 +58,12 @@ export function placeholders(message) {
 /**
  * Compares locales with a base locale. Returns a list of problems:
  * `missing` (in the base, not in the locale), `extra` (in the locale only), `placeholders` (different arguments or tags),
- * `empty` (an empty string) and `type` (string in one, something else in the other).
+ * `empty` (a text that is empty while the base locale has one; texts that are empty in both are left alone) and `type` (string in one, something else in the other).
  */
 export function compareLocales(locales, base) {
   if (!(base in locales)) throw new Error(`Base locale "${base}" not found; have: ${Object.keys(locales).join(", ") || "none"}`);
   const baseFlat = flatten(locales[base]);
   const problems = [];
-  for (const [key, text] of Object.entries(baseFlat)) {
-    if (text === "") problems.push({ locale: base, key, kind: "empty" });
-  }
   for (const [locale, messages] of Object.entries(locales)) {
     if (locale === base) continue;
     const flat = flatten(messages);
@@ -78,7 +75,7 @@ export function compareLocales(locales, base) {
       const text = flat[key];
       if (typeof text !== typeof baseText) {
         problems.push({ locale, key, kind: "type", detail: `${typeof baseText} in ${base}, ${typeof text} in ${locale}` });
-      } else if (text === "") {
+      } else if (text === "" && baseText !== "") {
         problems.push({ locale, key, kind: "empty" });
       } else if (typeof text === "string") {
         const a = placeholders(baseText);

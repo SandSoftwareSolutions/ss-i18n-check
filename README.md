@@ -46,7 +46,7 @@ placeholders("{count, plural, one {# taak} other {# taken}}"); // ["count"]
 | `missing` | The key is in the base locale but not in this one |
 | `extra` | The key is in this locale but not in the base |
 | `placeholders` | Different `{arguments}` or `<tags>` than the base |
-| `empty` | An empty text |
+| `empty` | An empty text where the base locale has one (a text that is empty in both is left alone) |
 | `type` | A text in one locale, something else in the other |
 
 Nested messages and arrays are compared by path (`cart.items.0`).

@@ -24,8 +24,8 @@ test("placeholders reads arguments, plural/select branches and rich text tags", 
 test("compareLocales finds every kind of problem", () => {
   const problems = compareLocales(
     {
-      nl: { a: "Hoi {name}", b: "twee", c: { d: "diep" }, n: 1, leeg: "x" },
-      en: { a: "Hi {nme}", c: {}, n: "een", leeg: "", extra: "weg", c2: "x" }
+      nl: { a: "Hoi {name}", b: "twee", c: { d: "diep" }, n: 1, leeg: "x", bewust: "" },
+      en: { a: "Hi {nme}", c: {}, n: "een", leeg: "", extra: "weg", c2: "x", bewust: "" }
     },
     "nl"
   );
