@@ -1,0 +1,49 @@
+{
+  "name": "@sandsoftwaresolutions/i18n-check",
+  "version": "0.1.0",
+  "description": "Compare translation files: missing and extra keys, different placeholders, empty texts. Understands ICU plurals and rich text tags.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "bin"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "i18n",
+    "translations",
+    "next-intl",
+    "icu",
+    "lint"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandSoftwareSolutions/ss-i18n-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SandSoftwareSolutions/ss-i18n-check/issues"
+  },
+  "homepage": "https://github.com/SandSoftwareSolutions/ss-i18n-check#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "i18n-check": "./bin/i18n-check.js"
+  }
+}
