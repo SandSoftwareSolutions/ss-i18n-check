@@ -38,8 +38,8 @@ try {
     for (const p of problems) console.log(`${p.locale}: ${p.kind.padEnd(12)} ${p.key}${p.detail ? `  (${p.detail})` : ""}`);
     console.log(`\n${problems.length} problem${problems.length === 1 ? "" : "s"} against ${base}`);
   }
-  process.exit(problems.length === 0 ? 0 : 1);
+  process.exitCode = problems.length === 0 ? 0 : 1; // not process.exit(): that can cut off output that is still being written to a pipe
 } catch (error) {
   console.error(`i18n-check: ${error.message}`);
-  process.exit(2);
+  process.exitCode = 2;
 }

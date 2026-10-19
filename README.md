@@ -51,6 +51,10 @@ placeholders("{count, plural, one {# taak} other {# taken}}"); // ["count"]
 
 Nested messages and arrays are compared by path (`cart.items.0`).
 
+Tags: `<b>...</b>` and `<br/>` count; a `<word>` without a closing tag is plain text (so `template add <address>` and its translation `template add <adres>` do not differ). A translation that drops the closing tag does differ. Tags with attributes (`<a href="...">`) are not ICU rich text and are not compared. Text between ICU quotes (`'{name}'`) is not a placeholder. A byte order mark at the start of a JSON file is ignored. The output is complete also when it is piped (for example into `jq`).
+
+Tried on the real `company-site/messages` (nl and en, about 700 lines): no problems.
+
 ## Not included
 
 It does not look for keys that your code no longer uses. That cannot be done reliably without knowing how your code builds keys.
