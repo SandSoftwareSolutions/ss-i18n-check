@@ -10,6 +10,8 @@ Keep your translation files in step. Compares every `<locale>.json` with a base 
 npm install --save-dev @sandsoftwaresolutions/i18n-check
 ```
 
+Works with `import` and `require()`, and ships TypeScript types for both.
+
 ## Command line
 
 ```bash

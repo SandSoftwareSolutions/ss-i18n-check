@@ -1,17 +1,26 @@
 {
   "name": "@sandsoftwaresolutions/i18n-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Compare translation files: missing and extra keys, different placeholders, empty texts. Understands ICU plurals and rich text tags.",
   "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.d.ts",
-      "import": "./src/index.js"
+      "import": {
+        "types": "./src/index.d.ts",
+        "default": "./src/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
   "files": [
     "src",
+    "dist",
     "README.md",
     "LICENSE",
     "bin"
@@ -21,8 +30,10 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test",
-    "pack:check": "npm pack --dry-run"
+    "test": "node --test && node scripts/build-cjs.mjs --check",
+    "pack:check": "npm pack --dry-run",
+    "build": "node scripts/build-cjs.mjs",
+    "prepack": "node scripts/build-cjs.mjs"
   },
   "keywords": [
     "i18n",
